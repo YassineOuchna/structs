@@ -1,24 +1,27 @@
 #include "utils.h"
+#include <sstream>
+#include <random>
 
 namespace utils {
 
     std::vector<int> parseInputValues(std::string& line) {
         std::vector<int> values = {};
-        std::string num;
+        std::istringstream iss(line);
 
-        for (char c : line) {
-            if (c == ' ') {
-                if (!num.empty()) {
-                    values.push_back(std::stoi(num));
-                    num = "";
-                    continue;
-                }
+        int val;
+        while (iss >> val) {
+            values.push_back(val);
+        }
+
+        // no integers specified, generate random numbers
+        if (values.size() == 0) {
+            size_t s = 11;
+            for (size_t index = 0; index < s; index++) {
+                int val = std::rand() % 10;
+                values.push_back(val);
             }
-            num += c;
         }
-        if (!num.empty()) {
-            values.push_back(std::stoi(num));
-        }
+
         return values;
     }
 }

@@ -8,7 +8,7 @@
 
 
 int main() {
-    std::cout << "Choose a data struture\n";
+    std::cout << "Choose a data struture by inputing its index\n";
     DataStructureFactory::showAvailableStructures();
     size_t num_structures = DataStructureFactory::getNumStructures();
     size_t structure_index;
@@ -22,8 +22,6 @@ int main() {
         }
     }
 
-    std::cout << "You chose " << DataStructureFactory::getStructName(structure_index) << '\n';
-
     DataStructure* ds = DataStructureFactory::getDataStructure(structure_index);
     std::cout << "Type a series of spaced out integers" << std::endl;
 
@@ -33,10 +31,8 @@ int main() {
     std::vector<int> values = utils::parseInputValues(input);
 
     // Populating data structure
+    std::cout << "Populating " << DataStructureFactory::getStructName(structure_index)  << std::endl;
     ds->build(values);
-
-    // Displaying data structure
-    ds->display();
 
     std::cin.get();
     return 0;

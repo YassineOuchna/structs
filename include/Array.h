@@ -47,12 +47,18 @@ class Array : public DataStructure {
         void build(const std::vector<int> &values) override {
             for (int val : values) {
                 Array::append(val);
+                Array::display();
             }
         };
 
         void display() override {
-            for (size_t index = 0; index < size; index++) {
-                std::cout << buffer[index] << " | ";
+            std::cout << "| ";
+            for (size_t index = 0; index < capacity; index++) {
+                if (index < size) {
+                    std::cout << buffer[index] << " | ";
+                } else {
+                    std::cout << ' ' << " | ";
+                }
             }
             std::cout << std::endl;
         };
