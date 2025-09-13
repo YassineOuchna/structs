@@ -15,9 +15,9 @@ namespace utils {
 
         // no integers specified, generate random numbers
         if (values.size() == 0) {
-            size_t s = 11;
+            size_t s = 9;
             for (size_t index = 0; index < s; index++) {
-                int val = std::rand() % 10;
+                int val = std::rand() % 21;
                 values.push_back(val);
             }
         }

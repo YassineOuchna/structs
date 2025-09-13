@@ -9,6 +9,18 @@ class Array : public DataStructure {
         size_t size;
         int* buffer;
         size_t elementSize = sizeof(int);
+
+        void display_buffer(int* &disp_buffer, size_t disp_size, size_t capacity) {
+            std::cout << "| ";
+            for (size_t index = 0; index < capacity; index++) {
+                if (index < disp_size) {
+                    std::cout << disp_buffer[index] << " | ";
+                } else {
+                    std::cout << ' ' << " | ";
+                }
+            }
+            std::cout << std::endl;
+        };
     public:
         ~Array() override {
             free(buffer);
@@ -51,15 +63,34 @@ class Array : public DataStructure {
             }
         };
 
-        void display() override {
-            std::cout << "| ";
-            for (size_t index = 0; index < capacity; index++) {
-                if (index < size) {
-                    std::cout << buffer[index] << " | ";
-                } else {
-                    std::cout << ' ' << " | ";
+        void sort() override {
+            int* sorted_buff = static_cast<int*>(malloc(capacity));
+            sorted_buff[0] = buffer[0];
+            std::cout << "Initializing sorted array" << std::endl;
+            Array::display_buffer(sorted_buff, 1, capacity);
+            for (size_t index = 1; index < size; index++) {
+                std::cout << "placing " << buffer[index] << std::endl;
+                sorted_buff[index] = buffer[index];
+                Array::display_buffer(sorted_buff, index+1, capacity);
+                size_t spot = index;
+                while (sorted_buff[spot] < sorted_buff[spot-1]) {
+                    int m = sorted_buff[spot];
+                    sorted_buff[spot] = sorted_buff[spot-1];
+                    sorted_buff[spot-1] = m;
+                    Array::display_buffer(sorted_buff, index+1, capacity);
+                    if (spot == 0) {
+                        break;
+                    }
+                    spot--;
                 }
+                std::cout << "--------------------------------" << std::endl;
             }
-            std::cout << std::endl;
+            free(buffer);
+            buffer = sorted_buff;
         };
+
+        void display() override {
+            Array::display_buffer(buffer, size, capacity);
+        };
+
 };
