@@ -35,10 +35,8 @@ int main() {
     ds->build(values);
 
 
-    std::cout << "Sorting " << DataStructureFactory::getStructName(structure_index)  << std::endl;
+    std::cout << "Different sorting algorithms on " << DataStructureFactory::getStructName(structure_index)  << std::endl;
     ds->sort();
-    std::cout << "Sorted " << DataStructureFactory::getStructName(structure_index)  << std::endl;
-    ds->display();
 
     std::cin.get();
     return 0;

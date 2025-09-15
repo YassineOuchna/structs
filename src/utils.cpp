@@ -1,6 +1,7 @@
 #include "utils.h"
 #include <sstream>
 #include <random>
+#include <ctime>
 
 namespace utils {
 
@@ -15,6 +16,7 @@ namespace utils {
 
         // no integers specified, generate random numbers
         if (values.size() == 0) {
+            std::srand(std::time(nullptr));
             size_t s = 9;
             for (size_t index = 0; index < s; index++) {
                 int val = std::rand() % 21;

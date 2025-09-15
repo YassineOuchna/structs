@@ -4,7 +4,7 @@ SRC_DIR = ./src
 BUILD_DIR = ./builds
 
 # App name
-TARGET = Structs
+TARGET = structs
 
 # Compiler settings
 CXX = g++
@@ -24,8 +24,10 @@ DEPS := $(OBJS:.o=.d)
 
 # --------- Build --------
 
-.PHONY: all clean
+.PHONY: all run clean
 
+run: $(TARGET)
+	@./$(TARGET)
 all: $(TARGET)
 
 # Rule to link the final executable
