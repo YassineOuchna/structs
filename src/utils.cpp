@@ -19,7 +19,7 @@ namespace utils {
             std::srand(std::time(nullptr));
             size_t s = 9;
             for (size_t index = 0; index < s; index++) {
-                int val = std::rand() % 21;
+                int val = std::rand() % 121;
                 values.push_back(val);
             }
         }
