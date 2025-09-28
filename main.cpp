@@ -23,19 +23,20 @@ int main() {
     }
 
     DataStructure* ds = DataStructureFactory::getDataStructure(structure_index);
-    std::cout << "Type a series of spaced out integers" << std::endl;
+    std::string dsName = DataStructureFactory::getStructName(structure_index);
+    std::cout << "Type the size of your desired random instance" << std::endl;
 
-    std::string input;
-    std::getline(std::cin, input);
-
-    std::vector<int> values = utils::parseInputValues(input);
+    size_t s;
+    std::cin >> s;
+    std::cin.ignore();
+    std::vector<int> values = utils::generateRandomInstance(s);
 
     // Populating data structure
-    std::cout << "Populating " << DataStructureFactory::getStructName(structure_index)  << std::endl;
+    std::cout << "Populating " << dsName  << std::endl;
     ds->build(values);
 
 
-    std::cout << "Different sorting algorithms on " << DataStructureFactory::getStructName(structure_index)  << std::endl;
+    std::cout << "Different sorting algorithms on " << dsName << std::endl;
     ds->sort();
 
     std::cin.get();

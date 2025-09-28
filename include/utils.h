@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 namespace utils {
-    std::vector<int> parseInputValues(std::string& line);
+    std::vector<int> generateRandomInstance(size_t s);
 
 }
 #endif

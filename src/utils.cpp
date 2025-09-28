@@ -5,19 +5,11 @@
 
 namespace utils {
 
-    std::vector<int> parseInputValues(std::string& line) {
+    std::vector<int> generateRandomInstance(size_t s) {
         std::vector<int> values = {};
-        std::istringstream iss(line);
 
-        int val;
-        while (iss >> val) {
-            values.push_back(val);
-        }
-
-        // no integers specified, generate random numbers
         if (values.size() == 0) {
             std::srand(std::time(nullptr));
-            size_t s = 9;
             for (size_t index = 0; index < s; index++) {
                 int val = std::rand() % 121;
                 values.push_back(val);
