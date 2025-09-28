@@ -54,7 +54,7 @@ class Array : public DataStructure {
         void resize() {
             capacity *= 2;
             int* new_array  = new int[capacity];
-            std::copy(array, array + capacity, new_array);
+            copy(new_array);
             delete[] array;
             array = new_array;
         }

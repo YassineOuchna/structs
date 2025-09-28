@@ -2,10 +2,12 @@
 #include <iostream>
 #include <vector>
 #include <Array.h>
+#include <LinkedList.h>
 
 
 std::vector<std::string> DataStructureFactory::DATASTRUCTURES = {
-    "Array"
+    "Array",
+    "Linked List"
 };
     
 void DataStructureFactory::showAvailableStructures() {
@@ -28,6 +30,10 @@ std::string DataStructureFactory::getStructName(int dsId) {
 DataStructure* DataStructureFactory::getDataStructure(int dsId) {
     if (dsId == 0) {
         DataStructure* ds = new Array();
+        return ds;
+    }
+    if (dsId == 1) {
+        DataStructure* ds = new LinkedList();
         return ds;
     }
     return nullptr;

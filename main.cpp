@@ -40,5 +40,6 @@ int main() {
     ds->sort();
 
     std::cin.get();
+    delete ds;
     return 0;
 }

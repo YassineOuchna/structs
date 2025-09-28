@@ -7,5 +7,4 @@ class DataStructure {
         virtual void build(const std::vector<int> &values) = 0;
         virtual void display() = 0;
         virtual void sort() = 0;
-        virtual void copy(int* &dest) = 0;
 };
